@@ -1,0 +1,42 @@
+{
+    "name": "ExtractTables",
+    "fields": [
+        {
+            "fieldName": "tablename",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isExtractable",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extractParts",
+            "otherEntityRelationshipName": "extractTables",
+            "relationshipName": "extractTableid"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extractOrganisationAudit",
+            "otherEntityRelationshipName": "extractTables",
+            "relationshipName": "extractTableid"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extractAudit",
+            "otherEntityRelationshipName": "extractTables",
+            "relationshipName": "extractTableid"
+        }
+    ],
+    "changelogDate": "20190328121613",
+    "entityTableName": "extract_tables",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
