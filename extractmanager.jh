@@ -11,12 +11,16 @@ entity ExtractConfig {
      	Requestingorg String,
         Active Boolean,
         Deleted Boolean,
+        Disabled Boolean,
         EmailContact String,
         CreatedDate Instant
 }
 
 entity ExtractOrganisation {
-     	Organisation  String,
+     	OrganisationName  String,        
+        Deleted Boolean,
+        Disabled Boolean,
+        IsActive Boolean,
         ModifiedDate Instant,
         CreatedDate Instant
 }
@@ -46,6 +50,8 @@ entity ExtractTables {
 }
 
 entity ExtractOrganisationAudit {
+		FirstExtractPoint String,
+        LastExtractPoint String,
      	CreatedDate  Instant,
      	Success Boolean
 }
@@ -71,41 +77,19 @@ entity ExtractTables {
 }
 
 relationship OneToMany {
-	Organisation{Organisationid} to ExtractOrganisation
+        Organisation{ExtractOrganisation} to ExtractOrganisation,
+        Organisation{ExtractOrganisationAudit} to ExtractOrganisationAudit
 }
 
 relationship OneToMany {
-	ExtractConfig{Extractid} to ExtractOrganisation
+        ExtractConfig{ExtractOrganisation} to ExtractOrganisation,
+        ExtractConfig{ExtractParts} to ExtractParts,
+        ExtractConfig{ExtractDetails} to ExtractDetails,
+        ExtractConfig{ExtractAudit} to ExtractAudit,
+        ExtractAudit{ExtractOrganisationAudit} to ExtractOrganisationAudit
 }
 
 relationship OneToMany {
-	ExtractConfig{Extractid} to ExtractParts
-}
-
-relationship OneToMany {
-	ExtractTables{ExtractTableid} to ExtractParts
-}
-
-relationship OneToMany {
-	ExtractConfig{Extractid} to ExtractDetails
-}
-
-relationship OneToMany {
-	ExtractConfig{Extractid} to ExtractOrganisationAudit
-}
-
-relationship OneToMany {
-	Organisation{Organisationid} to ExtractOrganisationAudit
-}
-
-relationship OneToMany {
-	ExtractTables{ExtractTableid} to ExtractOrganisationAudit
-}
-
-relationship OneToMany {
-	ExtractConfig{Extractid} to ExtractAudit
-}
-
-relationship OneToMany {
-	ExtractTables{ExtractTableid} to ExtractAudit
+        ExtractTables{ExtractParts} to ExtractParts,
+        ExtractTables{ExtractAudit} to ExtractAudit
 }
