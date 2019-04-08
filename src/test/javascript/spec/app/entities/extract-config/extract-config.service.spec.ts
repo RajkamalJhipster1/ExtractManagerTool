@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new ExtractConfig(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false, false, 'AAAAAAA', currentDate);
+            elemDefault = new ExtractConfig(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false, false, false, 'AAAAAAA', currentDate);
         });
 
         describe('Service methods', async () => {
@@ -75,6 +75,7 @@ describe('Service Tests', () => {
                         requestingorg: 'BBBBBB',
                         active: true,
                         deleted: true,
+                        disabled: true,
                         emailContact: 'BBBBBB',
                         createdDate: currentDate.format(DATE_TIME_FORMAT)
                     },
@@ -103,6 +104,7 @@ describe('Service Tests', () => {
                         requestingorg: 'BBBBBB',
                         active: true,
                         deleted: true,
+                        disabled: true,
                         emailContact: 'BBBBBB',
                         createdDate: currentDate.format(DATE_TIME_FORMAT)
                     },

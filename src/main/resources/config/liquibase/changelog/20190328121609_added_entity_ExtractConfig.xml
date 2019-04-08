@@ -42,6 +42,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="disabled" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
             <column name="email_contact" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

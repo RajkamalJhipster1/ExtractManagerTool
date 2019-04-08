@@ -34,13 +34,10 @@ public class ExtractTables implements Serializable {
 
     @OneToMany(mappedBy = "extractTables")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractParts> extractTableids = new HashSet<>();
+    private Set<ExtractParts> extractParts = new HashSet<>();
     @OneToMany(mappedBy = "extractTables")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractOrganisationAudit> extractTableids = new HashSet<>();
-    @OneToMany(mappedBy = "extractTables")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractAudit> extractTableids = new HashSet<>();
+    private Set<ExtractAudit> extractAudits = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -76,79 +73,54 @@ public class ExtractTables implements Serializable {
         this.isExtractable = isExtractable;
     }
 
-    public Set<ExtractParts> getExtractTableids() {
-        return extractTableids;
+    public Set<ExtractParts> getExtractParts() {
+        return extractParts;
     }
 
-    public ExtractTables extractTableids(Set<ExtractParts> extractParts) {
-        this.extractTableids = extractParts;
+    public ExtractTables extractParts(Set<ExtractParts> extractParts) {
+        this.extractParts = extractParts;
         return this;
     }
 
-    public ExtractTables addExtractTableid(ExtractParts extractParts) {
-        this.extractTableids.add(extractParts);
+    public ExtractTables addExtractParts(ExtractParts extractParts) {
+        this.extractParts.add(extractParts);
         extractParts.setExtractTables(this);
         return this;
     }
 
-    public ExtractTables removeExtractTableid(ExtractParts extractParts) {
-        this.extractTableids.remove(extractParts);
+    public ExtractTables removeExtractParts(ExtractParts extractParts) {
+        this.extractParts.remove(extractParts);
         extractParts.setExtractTables(null);
         return this;
     }
 
-    public void setExtractTableids(Set<ExtractParts> extractParts) {
-        this.extractTableids = extractParts;
+    public void setExtractParts(Set<ExtractParts> extractParts) {
+        this.extractParts = extractParts;
     }
 
-    public Set<ExtractOrganisationAudit> getExtractTableids() {
-        return extractTableids;
+    public Set<ExtractAudit> getExtractAudits() {
+        return extractAudits;
     }
 
-    public ExtractTables extractTableids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.extractTableids = extractOrganisationAudits;
+    public ExtractTables extractAudits(Set<ExtractAudit> extractAudits) {
+        this.extractAudits = extractAudits;
         return this;
     }
 
-    public ExtractTables addExtractTableid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.extractTableids.add(extractOrganisationAudit);
-        extractOrganisationAudit.setExtractTables(this);
-        return this;
-    }
-
-    public ExtractTables removeExtractTableid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.extractTableids.remove(extractOrganisationAudit);
-        extractOrganisationAudit.setExtractTables(null);
-        return this;
-    }
-
-    public void setExtractTableids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.extractTableids = extractOrganisationAudits;
-    }
-
-    public Set<ExtractAudit> getExtractTableids() {
-        return extractTableids;
-    }
-
-    public ExtractTables extractTableids(Set<ExtractAudit> extractAudits) {
-        this.extractTableids = extractAudits;
-        return this;
-    }
-
-    public ExtractTables addExtractTableid(ExtractAudit extractAudit) {
-        this.extractTableids.add(extractAudit);
+    public ExtractTables addExtractAudit(ExtractAudit extractAudit) {
+        this.extractAudits.add(extractAudit);
         extractAudit.setExtractTables(this);
         return this;
     }
 
-    public ExtractTables removeExtractTableid(ExtractAudit extractAudit) {
-        this.extractTableids.remove(extractAudit);
+    public ExtractTables removeExtractAudit(ExtractAudit extractAudit) {
+        this.extractAudits.remove(extractAudit);
         extractAudit.setExtractTables(null);
         return this;
     }
 
-    public void setExtractTableids(Set<ExtractAudit> extractAudits) {
-        this.extractTableids = extractAudits;
+    public void setExtractAudits(Set<ExtractAudit> extractAudits) {
+        this.extractAudits = extractAudits;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

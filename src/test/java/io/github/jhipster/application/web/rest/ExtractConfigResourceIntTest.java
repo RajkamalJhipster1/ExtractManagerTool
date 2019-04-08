@@ -57,6 +57,9 @@ public class ExtractConfigResourceIntTest {
     private static final Boolean DEFAULT_DELETED = false;
     private static final Boolean UPDATED_DELETED = true;
 
+    private static final Boolean DEFAULT_DISABLED = false;
+    private static final Boolean UPDATED_DISABLED = true;
+
     private static final String DEFAULT_EMAIL_CONTACT = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_CONTACT = "BBBBBBBBBB";
 
@@ -110,6 +113,7 @@ public class ExtractConfigResourceIntTest {
             .requestingorg(DEFAULT_REQUESTINGORG)
             .active(DEFAULT_ACTIVE)
             .deleted(DEFAULT_DELETED)
+            .disabled(DEFAULT_DISABLED)
             .emailContact(DEFAULT_EMAIL_CONTACT)
             .createdDate(DEFAULT_CREATED_DATE);
         return extractConfig;
@@ -140,6 +144,7 @@ public class ExtractConfigResourceIntTest {
         assertThat(testExtractConfig.getRequestingorg()).isEqualTo(DEFAULT_REQUESTINGORG);
         assertThat(testExtractConfig.isActive()).isEqualTo(DEFAULT_ACTIVE);
         assertThat(testExtractConfig.isDeleted()).isEqualTo(DEFAULT_DELETED);
+        assertThat(testExtractConfig.isDisabled()).isEqualTo(DEFAULT_DISABLED);
         assertThat(testExtractConfig.getEmailContact()).isEqualTo(DEFAULT_EMAIL_CONTACT);
         assertThat(testExtractConfig.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
     }
@@ -179,6 +184,7 @@ public class ExtractConfigResourceIntTest {
             .andExpect(jsonPath("$.[*].requestingorg").value(hasItem(DEFAULT_REQUESTINGORG.toString())))
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())))
             .andExpect(jsonPath("$.[*].deleted").value(hasItem(DEFAULT_DELETED.booleanValue())))
+            .andExpect(jsonPath("$.[*].disabled").value(hasItem(DEFAULT_DISABLED.booleanValue())))
             .andExpect(jsonPath("$.[*].emailContact").value(hasItem(DEFAULT_EMAIL_CONTACT.toString())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())));
     }
@@ -199,6 +205,7 @@ public class ExtractConfigResourceIntTest {
             .andExpect(jsonPath("$.requestingorg").value(DEFAULT_REQUESTINGORG.toString()))
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()))
             .andExpect(jsonPath("$.deleted").value(DEFAULT_DELETED.booleanValue()))
+            .andExpect(jsonPath("$.disabled").value(DEFAULT_DISABLED.booleanValue()))
             .andExpect(jsonPath("$.emailContact").value(DEFAULT_EMAIL_CONTACT.toString()))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()));
     }
@@ -229,6 +236,7 @@ public class ExtractConfigResourceIntTest {
             .requestingorg(UPDATED_REQUESTINGORG)
             .active(UPDATED_ACTIVE)
             .deleted(UPDATED_DELETED)
+            .disabled(UPDATED_DISABLED)
             .emailContact(UPDATED_EMAIL_CONTACT)
             .createdDate(UPDATED_CREATED_DATE);
 
@@ -246,6 +254,7 @@ public class ExtractConfigResourceIntTest {
         assertThat(testExtractConfig.getRequestingorg()).isEqualTo(UPDATED_REQUESTINGORG);
         assertThat(testExtractConfig.isActive()).isEqualTo(UPDATED_ACTIVE);
         assertThat(testExtractConfig.isDeleted()).isEqualTo(UPDATED_DELETED);
+        assertThat(testExtractConfig.isDisabled()).isEqualTo(UPDATED_DISABLED);
         assertThat(testExtractConfig.getEmailContact()).isEqualTo(UPDATED_EMAIL_CONTACT);
         assertThat(testExtractConfig.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
     }

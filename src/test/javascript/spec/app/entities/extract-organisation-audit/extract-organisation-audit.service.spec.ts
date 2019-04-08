@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new ExtractOrganisationAudit(0, currentDate, false);
+            elemDefault = new ExtractOrganisationAudit(0, 'AAAAAAA', 'AAAAAAA', currentDate, false);
         });
 
         describe('Service methods', async () => {
@@ -70,6 +70,8 @@ describe('Service Tests', () => {
             it('should update a ExtractOrganisationAudit', async () => {
                 const returnedFromService = Object.assign(
                     {
+                        firstExtractPoint: 'BBBBBB',
+                        lastExtractPoint: 'BBBBBB',
                         createdDate: currentDate.format(DATE_TIME_FORMAT),
                         success: true
                     },
@@ -93,6 +95,8 @@ describe('Service Tests', () => {
             it('should return a list of ExtractOrganisationAudit', async () => {
                 const returnedFromService = Object.assign(
                     {
+                        firstExtractPoint: 'BBBBBB',
+                        lastExtractPoint: 'BBBBBB',
                         createdDate: currentDate.format(DATE_TIME_FORMAT),
                         success: true
                     },

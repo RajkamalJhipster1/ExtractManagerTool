@@ -1,6 +1,7 @@
 package io.github.jhipster.application.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,6 +10,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -62,13 +65,16 @@ public class ExtractAudit implements Serializable {
     private Boolean success;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractids")
+    @JsonIgnoreProperties("extractAudits")
     private ExtractConfig extractConfig;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractTableids")
+    @JsonIgnoreProperties("extractAudits")
     private ExtractTables extractTables;
 
+    @OneToMany(mappedBy = "extractAudit")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ExtractOrganisationAudit> extractOrganisationAudits = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -258,6 +264,31 @@ public class ExtractAudit implements Serializable {
 
     public void setExtractTables(ExtractTables extractTables) {
         this.extractTables = extractTables;
+    }
+
+    public Set<ExtractOrganisationAudit> getExtractOrganisationAudits() {
+        return extractOrganisationAudits;
+    }
+
+    public ExtractAudit extractOrganisationAudits(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
+        this.extractOrganisationAudits = extractOrganisationAudits;
+        return this;
+    }
+
+    public ExtractAudit addExtractOrganisationAudit(ExtractOrganisationAudit extractOrganisationAudit) {
+        this.extractOrganisationAudits.add(extractOrganisationAudit);
+        extractOrganisationAudit.setExtractAudit(this);
+        return this;
+    }
+
+    public ExtractAudit removeExtractOrganisationAudit(ExtractOrganisationAudit extractOrganisationAudit) {
+        this.extractOrganisationAudits.remove(extractOrganisationAudit);
+        extractOrganisationAudit.setExtractAudit(null);
+        return this;
+    }
+
+    public void setExtractOrganisationAudits(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
+        this.extractOrganisationAudits = extractOrganisationAudits;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

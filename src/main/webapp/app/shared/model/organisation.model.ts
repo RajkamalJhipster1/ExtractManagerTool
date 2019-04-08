@@ -7,8 +7,8 @@ export interface IOrganisation {
     organisationName?: string;
     nationalPracticeCode?: string;
     active?: boolean;
-    organisationids?: IExtractOrganisation[];
-    organisationids?: IExtractOrganisationAudit[];
+    extractOrganisations?: IExtractOrganisation[];
+    extractOrganisationAudits?: IExtractOrganisationAudit[];
 }
 
 export class Organisation implements IOrganisation {
@@ -18,8 +18,8 @@ export class Organisation implements IOrganisation {
         public organisationName?: string,
         public nationalPracticeCode?: string,
         public active?: boolean,
-        public organisationids?: IExtractOrganisation[],
-        public organisationids?: IExtractOrganisationAudit[]
+        public extractOrganisations?: IExtractOrganisation[],
+        public extractOrganisationAudits?: IExtractOrganisationAudit[]
     ) {
         this.active = this.active || false;
     }

@@ -40,10 +40,10 @@ public class Organisation implements Serializable {
 
     @OneToMany(mappedBy = "organisation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractOrganisation> organisationids = new HashSet<>();
+    private Set<ExtractOrganisation> extractOrganisations = new HashSet<>();
     @OneToMany(mappedBy = "organisation")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractOrganisationAudit> organisationids = new HashSet<>();
+    private Set<ExtractOrganisationAudit> extractOrganisationAudits = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -105,54 +105,54 @@ public class Organisation implements Serializable {
         this.active = active;
     }
 
-    public Set<ExtractOrganisation> getOrganisationids() {
-        return organisationids;
+    public Set<ExtractOrganisation> getExtractOrganisations() {
+        return extractOrganisations;
     }
 
-    public Organisation organisationids(Set<ExtractOrganisation> extractOrganisations) {
-        this.organisationids = extractOrganisations;
+    public Organisation extractOrganisations(Set<ExtractOrganisation> extractOrganisations) {
+        this.extractOrganisations = extractOrganisations;
         return this;
     }
 
-    public Organisation addOrganisationid(ExtractOrganisation extractOrganisation) {
-        this.organisationids.add(extractOrganisation);
+    public Organisation addExtractOrganisation(ExtractOrganisation extractOrganisation) {
+        this.extractOrganisations.add(extractOrganisation);
         extractOrganisation.setOrganisation(this);
         return this;
     }
 
-    public Organisation removeOrganisationid(ExtractOrganisation extractOrganisation) {
-        this.organisationids.remove(extractOrganisation);
+    public Organisation removeExtractOrganisation(ExtractOrganisation extractOrganisation) {
+        this.extractOrganisations.remove(extractOrganisation);
         extractOrganisation.setOrganisation(null);
         return this;
     }
 
-    public void setOrganisationids(Set<ExtractOrganisation> extractOrganisations) {
-        this.organisationids = extractOrganisations;
+    public void setExtractOrganisations(Set<ExtractOrganisation> extractOrganisations) {
+        this.extractOrganisations = extractOrganisations;
     }
 
-    public Set<ExtractOrganisationAudit> getOrganisationids() {
-        return organisationids;
+    public Set<ExtractOrganisationAudit> getExtractOrganisationAudits() {
+        return extractOrganisationAudits;
     }
 
-    public Organisation organisationids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.organisationids = extractOrganisationAudits;
+    public Organisation extractOrganisationAudits(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
+        this.extractOrganisationAudits = extractOrganisationAudits;
         return this;
     }
 
-    public Organisation addOrganisationid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.organisationids.add(extractOrganisationAudit);
+    public Organisation addExtractOrganisationAudit(ExtractOrganisationAudit extractOrganisationAudit) {
+        this.extractOrganisationAudits.add(extractOrganisationAudit);
         extractOrganisationAudit.setOrganisation(this);
         return this;
     }
 
-    public Organisation removeOrganisationid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.organisationids.remove(extractOrganisationAudit);
+    public Organisation removeExtractOrganisationAudit(ExtractOrganisationAudit extractOrganisationAudit) {
+        this.extractOrganisationAudits.remove(extractOrganisationAudit);
         extractOrganisationAudit.setOrganisation(null);
         return this;
     }
 
-    public void setOrganisationids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.organisationids = extractOrganisationAudits;
+    public void setExtractOrganisationAudits(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
+        this.extractOrganisationAudits = extractOrganisationAudits;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

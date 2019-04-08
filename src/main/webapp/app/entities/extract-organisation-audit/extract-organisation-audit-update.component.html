@@ -10,6 +10,16 @@
                         [(ngModel)]="extractOrganisationAudit.id" readonly />
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" for="field_firstExtractPoint">First Extract Point</label>
+                    <input type="text" class="form-control" name="firstExtractPoint" id="field_firstExtractPoint"
+                        [(ngModel)]="extractOrganisationAudit.firstExtractPoint" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastExtractPoint">Last Extract Point</label>
+                    <input type="text" class="form-control" name="lastExtractPoint" id="field_lastExtractPoint"
+                        [(ngModel)]="extractOrganisationAudit.lastExtractPoint" />
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" for="field_createdDate">Created Date</label>
                     <div class="d-flex">
                         <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate" placeholder="YYYY-MM-DD HH:mm"
@@ -30,17 +40,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_extractConfig">Extract Config</label>
-                    <select class="form-control" id="field_extractConfig" name="extractConfig" [(ngModel)]="extractOrganisationAudit.extractConfig" >
+                    <label class="form-control-label" for="field_extractAudit">Extract Audit</label>
+                    <select class="form-control" id="field_extractAudit" name="extractAudit" [(ngModel)]="extractOrganisationAudit.extractAudit" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="extractConfigOption.id === extractOrganisationAudit.extractConfig?.id ? extractOrganisationAudit.extractConfig : extractConfigOption" *ngFor="let extractConfigOption of extractconfigs; trackBy: trackExtractConfigById">{{extractConfigOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="field_extractTables">Extract Tables</label>
-                    <select class="form-control" id="field_extractTables" name="extractTables" [(ngModel)]="extractOrganisationAudit.extractTables" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="extractTablesOption.id === extractOrganisationAudit.extractTables?.id ? extractOrganisationAudit.extractTables : extractTablesOption" *ngFor="let extractTablesOption of extracttables; trackBy: trackExtractTablesById">{{extractTablesOption.id}}</option>
+                        <option [ngValue]="extractAuditOption.id === extractOrganisationAudit.extractAudit?.id ? extractOrganisationAudit.extractAudit : extractAuditOption" *ngFor="let extractAuditOption of extractaudits; trackBy: trackExtractAuditById">{{extractAuditOption.id}}</option>
                     </select>
                 </div>
             </div>

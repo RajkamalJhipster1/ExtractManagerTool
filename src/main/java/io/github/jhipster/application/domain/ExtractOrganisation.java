@@ -25,8 +25,17 @@ public class ExtractOrganisation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "organisation")
-    private String organisation;
+    @Column(name = "organisation_name")
+    private String organisationName;
+
+    @Column(name = "deleted")
+    private Boolean deleted;
+
+    @Column(name = "disabled")
+    private Boolean disabled;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 
     @Column(name = "modified_date")
     private Instant modifiedDate;
@@ -35,11 +44,11 @@ public class ExtractOrganisation implements Serializable {
     private Instant createdDate;
 
     @ManyToOne
-    @JsonIgnoreProperties("organisationids")
+    @JsonIgnoreProperties("extractOrganisations")
     private Organisation organisation;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractids")
+    @JsonIgnoreProperties("extractOrganisations")
     private ExtractConfig extractConfig;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -51,17 +60,56 @@ public class ExtractOrganisation implements Serializable {
         this.id = id;
     }
 
-    public String getOrganisation() {
-        return organisation;
+    public String getOrganisationName() {
+        return organisationName;
     }
 
-    public ExtractOrganisation organisation(String organisation) {
-        this.organisation = organisation;
+    public ExtractOrganisation organisationName(String organisationName) {
+        this.organisationName = organisationName;
         return this;
     }
 
-    public void setOrganisation(String organisation) {
-        this.organisation = organisation;
+    public void setOrganisationName(String organisationName) {
+        this.organisationName = organisationName;
+    }
+
+    public Boolean isDeleted() {
+        return deleted;
+    }
+
+    public ExtractOrganisation deleted(Boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Boolean isDisabled() {
+        return disabled;
+    }
+
+    public ExtractOrganisation disabled(Boolean disabled) {
+        this.disabled = disabled;
+        return this;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public Boolean isIsActive() {
+        return isActive;
+    }
+
+    public ExtractOrganisation isActive(Boolean isActive) {
+        this.isActive = isActive;
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     public Instant getModifiedDate() {
@@ -141,7 +189,10 @@ public class ExtractOrganisation implements Serializable {
     public String toString() {
         return "ExtractOrganisation{" +
             "id=" + getId() +
-            ", organisation='" + getOrganisation() + "'" +
+            ", organisationName='" + getOrganisationName() + "'" +
+            ", deleted='" + isDeleted() + "'" +
+            ", disabled='" + isDisabled() + "'" +
+            ", isActive='" + isIsActive() + "'" +
             ", modifiedDate='" + getModifiedDate() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             "}";

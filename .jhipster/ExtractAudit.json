@@ -62,6 +62,12 @@
             "otherEntityName": "extractTables",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extractOrganisationAudit",
+            "otherEntityRelationshipName": "extractAudit",
+            "relationshipName": "extractOrganisationAudit"
         }
     ],
     "changelogDate": "20190328121615",

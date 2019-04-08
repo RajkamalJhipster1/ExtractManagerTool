@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IExtractConfig } from 'app/shared/model/extract-config.model';
 import { IExtractTables } from 'app/shared/model/extract-tables.model';
+import { IExtractOrganisationAudit } from 'app/shared/model/extract-organisation-audit.model';
 
 export interface IExtractAudit {
     id?: number;
@@ -18,6 +19,7 @@ export interface IExtractAudit {
     success?: boolean;
     extractConfig?: IExtractConfig;
     extractTables?: IExtractTables;
+    extractOrganisationAudits?: IExtractOrganisationAudit[];
 }
 
 export class ExtractAudit implements IExtractAudit {
@@ -36,7 +38,8 @@ export class ExtractAudit implements IExtractAudit {
         public airflowUrl?: string,
         public success?: boolean,
         public extractConfig?: IExtractConfig,
-        public extractTables?: IExtractTables
+        public extractTables?: IExtractTables,
+        public extractOrganisationAudits?: IExtractOrganisationAudit[]
     ) {
         this.success = this.success || false;
     }

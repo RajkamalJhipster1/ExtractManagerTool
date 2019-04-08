@@ -15,19 +15,13 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "extractParts",
             "otherEntityRelationshipName": "extractTables",
-            "relationshipName": "extractTableid"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "extractOrganisationAudit",
-            "otherEntityRelationshipName": "extractTables",
-            "relationshipName": "extractTableid"
+            "relationshipName": "extractParts"
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "extractAudit",
             "otherEntityRelationshipName": "extractTables",
-            "relationshipName": "extractTableid"
+            "relationshipName": "extractAudit"
         }
     ],
     "changelogDate": "20190328121613",
