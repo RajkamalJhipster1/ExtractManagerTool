@@ -2,7 +2,6 @@ import { Moment } from 'moment';
 import { IExtractOrganisation } from 'app/shared/model/extract-organisation.model';
 import { IExtractParts } from 'app/shared/model/extract-parts.model';
 import { IExtractDetails } from 'app/shared/model/extract-details.model';
-import { IExtractOrganisationAudit } from 'app/shared/model/extract-organisation-audit.model';
 import { IExtractAudit } from 'app/shared/model/extract-audit.model';
 
 export interface IExtractConfig {
@@ -12,13 +11,13 @@ export interface IExtractConfig {
     requestingorg?: string;
     active?: boolean;
     deleted?: boolean;
+    disabled?: boolean;
     emailContact?: string;
     createdDate?: Moment;
-    extractids?: IExtractOrganisation[];
-    extractids?: IExtractParts[];
-    extractids?: IExtractDetails[];
-    extractids?: IExtractOrganisationAudit[];
-    extractids?: IExtractAudit[];
+    extractOrganisations?: IExtractOrganisation[];
+    extractParts?: IExtractParts[];
+    extractDetails?: IExtractDetails[];
+    extractAudits?: IExtractAudit[];
 }
 
 export class ExtractConfig implements IExtractConfig {
@@ -29,15 +28,16 @@ export class ExtractConfig implements IExtractConfig {
         public requestingorg?: string,
         public active?: boolean,
         public deleted?: boolean,
+        public disabled?: boolean,
         public emailContact?: string,
         public createdDate?: Moment,
-        public extractids?: IExtractOrganisation[],
-        public extractids?: IExtractParts[],
-        public extractids?: IExtractDetails[],
-        public extractids?: IExtractOrganisationAudit[],
-        public extractids?: IExtractAudit[]
+        public extractOrganisations?: IExtractOrganisation[],
+        public extractParts?: IExtractParts[],
+        public extractDetails?: IExtractDetails[],
+        public extractAudits?: IExtractAudit[]
     ) {
         this.active = this.active || false;
         this.deleted = this.deleted || false;
+        this.disabled = this.disabled || false;
     }
 }

@@ -25,6 +25,12 @@ public class ExtractOrganisationAudit implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "first_extract_point")
+    private String firstExtractPoint;
+
+    @Column(name = "last_extract_point")
+    private String lastExtractPoint;
+
     @Column(name = "created_date")
     private Instant createdDate;
 
@@ -32,16 +38,12 @@ public class ExtractOrganisationAudit implements Serializable {
     private Boolean success;
 
     @ManyToOne
-    @JsonIgnoreProperties("organisationids")
+    @JsonIgnoreProperties("extractOrganisationAudits")
     private Organisation organisation;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractids")
-    private ExtractConfig extractConfig;
-
-    @ManyToOne
-    @JsonIgnoreProperties("extractTableids")
-    private ExtractTables extractTables;
+    @JsonIgnoreProperties("extractOrganisationAudits")
+    private ExtractAudit extractAudit;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -50,6 +52,32 @@ public class ExtractOrganisationAudit implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFirstExtractPoint() {
+        return firstExtractPoint;
+    }
+
+    public ExtractOrganisationAudit firstExtractPoint(String firstExtractPoint) {
+        this.firstExtractPoint = firstExtractPoint;
+        return this;
+    }
+
+    public void setFirstExtractPoint(String firstExtractPoint) {
+        this.firstExtractPoint = firstExtractPoint;
+    }
+
+    public String getLastExtractPoint() {
+        return lastExtractPoint;
+    }
+
+    public ExtractOrganisationAudit lastExtractPoint(String lastExtractPoint) {
+        this.lastExtractPoint = lastExtractPoint;
+        return this;
+    }
+
+    public void setLastExtractPoint(String lastExtractPoint) {
+        this.lastExtractPoint = lastExtractPoint;
     }
 
     public Instant getCreatedDate() {
@@ -91,30 +119,17 @@ public class ExtractOrganisationAudit implements Serializable {
         this.organisation = organisation;
     }
 
-    public ExtractConfig getExtractConfig() {
-        return extractConfig;
+    public ExtractAudit getExtractAudit() {
+        return extractAudit;
     }
 
-    public ExtractOrganisationAudit extractConfig(ExtractConfig extractConfig) {
-        this.extractConfig = extractConfig;
+    public ExtractOrganisationAudit extractAudit(ExtractAudit extractAudit) {
+        this.extractAudit = extractAudit;
         return this;
     }
 
-    public void setExtractConfig(ExtractConfig extractConfig) {
-        this.extractConfig = extractConfig;
-    }
-
-    public ExtractTables getExtractTables() {
-        return extractTables;
-    }
-
-    public ExtractOrganisationAudit extractTables(ExtractTables extractTables) {
-        this.extractTables = extractTables;
-        return this;
-    }
-
-    public void setExtractTables(ExtractTables extractTables) {
-        this.extractTables = extractTables;
+    public void setExtractAudit(ExtractAudit extractAudit) {
+        this.extractAudit = extractAudit;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -142,6 +157,8 @@ public class ExtractOrganisationAudit implements Serializable {
     public String toString() {
         return "ExtractOrganisationAudit{" +
             "id=" + getId() +
+            ", firstExtractPoint='" + getFirstExtractPoint() + "'" +
+            ", lastExtractPoint='" + getLastExtractPoint() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", success='" + isSuccess() + "'" +
             "}";

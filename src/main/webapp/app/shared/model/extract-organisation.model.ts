@@ -4,7 +4,10 @@ import { IExtractConfig } from 'app/shared/model/extract-config.model';
 
 export interface IExtractOrganisation {
     id?: number;
-    organisation?: string;
+    organisationName?: string;
+    deleted?: boolean;
+    disabled?: boolean;
+    isActive?: boolean;
     modifiedDate?: Moment;
     createdDate?: Moment;
     organisation?: IOrganisation;
@@ -14,10 +17,17 @@ export interface IExtractOrganisation {
 export class ExtractOrganisation implements IExtractOrganisation {
     constructor(
         public id?: number,
-        public organisation?: string,
+        public organisationName?: string,
+        public deleted?: boolean,
+        public disabled?: boolean,
+        public isActive?: boolean,
         public modifiedDate?: Moment,
         public createdDate?: Moment,
         public organisation?: IOrganisation,
         public extractConfig?: IExtractConfig
-    ) {}
+    ) {
+        this.deleted = this.deleted || false;
+        this.disabled = this.disabled || false;
+        this.isActive = this.isActive || false;
+    }
 }

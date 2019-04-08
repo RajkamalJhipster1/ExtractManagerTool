@@ -15,17 +15,20 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
+            <th><span>First Extract Point</span></th>
+            <th><span>Last Extract Point</span></th>
             <th><span>Created Date</span></th>
             <th><span>Success</span></th>
             <th><span>Organisation</span></th>
-            <th><span>Extract Config</span></th>
-            <th><span>Extract Tables</span></th>
+            <th><span>Extract Audit</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let extractOrganisationAudit of extractOrganisationAudits ;trackBy: trackId">
                 <td><a [routerLink]="['/extract-organisation-audit', extractOrganisationAudit.id, 'view' ]">{{extractOrganisationAudit.id}}</a></td>
+                <td>{{extractOrganisationAudit.firstExtractPoint}}</td>
+                <td>{{extractOrganisationAudit.lastExtractPoint}}</td>
                 <td>{{extractOrganisationAudit.createdDate | date:'medium'}}</td>
                 <td>{{extractOrganisationAudit.success}}</td>
                 <td>
@@ -34,13 +37,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="extractOrganisationAudit.extractConfig">
-                        <a [routerLink]="['../extract-config', extractOrganisationAudit.extractConfig?.id, 'view' ]" >{{extractOrganisationAudit.extractConfig?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="extractOrganisationAudit.extractTables">
-                        <a [routerLink]="['../extract-tables', extractOrganisationAudit.extractTables?.id, 'view' ]" >{{extractOrganisationAudit.extractTables?.id}}</a>
+                    <div *ngIf="extractOrganisationAudit.extractAudit">
+                        <a [routerLink]="['../extract-audit', extractOrganisationAudit.extractAudit?.id, 'view' ]" >{{extractOrganisationAudit.extractAudit?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

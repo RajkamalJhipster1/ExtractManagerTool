@@ -23,13 +23,13 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "extractOrganisation",
             "otherEntityRelationshipName": "organisation",
-            "relationshipName": "organisationid"
+            "relationshipName": "extractOrganisation"
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "extractOrganisationAudit",
             "otherEntityRelationshipName": "organisation",
-            "relationshipName": "organisationid"
+            "relationshipName": "extractOrganisationAudit"
         }
     ],
     "changelogDate": "20190328121608",

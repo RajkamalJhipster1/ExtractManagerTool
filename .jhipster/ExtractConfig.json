@@ -22,6 +22,10 @@
             "fieldType": "Boolean"
         },
         {
+            "fieldName": "disabled",
+            "fieldType": "Boolean"
+        },
+        {
             "fieldName": "emailContact",
             "fieldType": "String"
         },
@@ -35,31 +39,25 @@
             "relationshipType": "one-to-many",
             "otherEntityName": "extractOrganisation",
             "otherEntityRelationshipName": "extractConfig",
-            "relationshipName": "extractid"
+            "relationshipName": "extractOrganisation"
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "extractParts",
             "otherEntityRelationshipName": "extractConfig",
-            "relationshipName": "extractid"
+            "relationshipName": "extractParts"
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "extractDetails",
             "otherEntityRelationshipName": "extractConfig",
-            "relationshipName": "extractid"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "extractOrganisationAudit",
-            "otherEntityRelationshipName": "extractConfig",
-            "relationshipName": "extractid"
+            "relationshipName": "extractDetails"
         },
         {
             "relationshipType": "one-to-many",
             "otherEntityName": "extractAudit",
             "otherEntityRelationshipName": "extractConfig",
-            "relationshipName": "extractid"
+            "relationshipName": "extractAudit"
         }
     ],
     "changelogDate": "20190328121609",

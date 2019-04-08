@@ -42,6 +42,9 @@ public class ExtractConfig implements Serializable {
     @Column(name = "deleted")
     private Boolean deleted;
 
+    @Column(name = "disabled")
+    private Boolean disabled;
+
     @Column(name = "email_contact")
     private String emailContact;
 
@@ -50,19 +53,16 @@ public class ExtractConfig implements Serializable {
 
     @OneToMany(mappedBy = "extractConfig")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractOrganisation> extractids = new HashSet<>();
+    private Set<ExtractOrganisation> extractOrganisations = new HashSet<>();
     @OneToMany(mappedBy = "extractConfig")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractParts> extractids = new HashSet<>();
+    private Set<ExtractParts> extractParts = new HashSet<>();
     @OneToMany(mappedBy = "extractConfig")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractDetails> extractids = new HashSet<>();
+    private Set<ExtractDetails> extractDetails = new HashSet<>();
     @OneToMany(mappedBy = "extractConfig")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractOrganisationAudit> extractids = new HashSet<>();
-    @OneToMany(mappedBy = "extractConfig")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ExtractAudit> extractids = new HashSet<>();
+    private Set<ExtractAudit> extractAudits = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -137,6 +137,19 @@ public class ExtractConfig implements Serializable {
         this.deleted = deleted;
     }
 
+    public Boolean isDisabled() {
+        return disabled;
+    }
+
+    public ExtractConfig disabled(Boolean disabled) {
+        this.disabled = disabled;
+        return this;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
     public String getEmailContact() {
         return emailContact;
     }
@@ -163,129 +176,104 @@ public class ExtractConfig implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Set<ExtractOrganisation> getExtractids() {
-        return extractids;
+    public Set<ExtractOrganisation> getExtractOrganisations() {
+        return extractOrganisations;
     }
 
-    public ExtractConfig extractids(Set<ExtractOrganisation> extractOrganisations) {
-        this.extractids = extractOrganisations;
+    public ExtractConfig extractOrganisations(Set<ExtractOrganisation> extractOrganisations) {
+        this.extractOrganisations = extractOrganisations;
         return this;
     }
 
-    public ExtractConfig addExtractid(ExtractOrganisation extractOrganisation) {
-        this.extractids.add(extractOrganisation);
+    public ExtractConfig addExtractOrganisation(ExtractOrganisation extractOrganisation) {
+        this.extractOrganisations.add(extractOrganisation);
         extractOrganisation.setExtractConfig(this);
         return this;
     }
 
-    public ExtractConfig removeExtractid(ExtractOrganisation extractOrganisation) {
-        this.extractids.remove(extractOrganisation);
+    public ExtractConfig removeExtractOrganisation(ExtractOrganisation extractOrganisation) {
+        this.extractOrganisations.remove(extractOrganisation);
         extractOrganisation.setExtractConfig(null);
         return this;
     }
 
-    public void setExtractids(Set<ExtractOrganisation> extractOrganisations) {
-        this.extractids = extractOrganisations;
+    public void setExtractOrganisations(Set<ExtractOrganisation> extractOrganisations) {
+        this.extractOrganisations = extractOrganisations;
     }
 
-    public Set<ExtractParts> getExtractids() {
-        return extractids;
+    public Set<ExtractParts> getExtractParts() {
+        return extractParts;
     }
 
-    public ExtractConfig extractids(Set<ExtractParts> extractParts) {
-        this.extractids = extractParts;
+    public ExtractConfig extractParts(Set<ExtractParts> extractParts) {
+        this.extractParts = extractParts;
         return this;
     }
 
-    public ExtractConfig addExtractid(ExtractParts extractParts) {
-        this.extractids.add(extractParts);
+    public ExtractConfig addExtractParts(ExtractParts extractParts) {
+        this.extractParts.add(extractParts);
         extractParts.setExtractConfig(this);
         return this;
     }
 
-    public ExtractConfig removeExtractid(ExtractParts extractParts) {
-        this.extractids.remove(extractParts);
+    public ExtractConfig removeExtractParts(ExtractParts extractParts) {
+        this.extractParts.remove(extractParts);
         extractParts.setExtractConfig(null);
         return this;
     }
 
-    public void setExtractids(Set<ExtractParts> extractParts) {
-        this.extractids = extractParts;
+    public void setExtractParts(Set<ExtractParts> extractParts) {
+        this.extractParts = extractParts;
     }
 
-    public Set<ExtractDetails> getExtractids() {
-        return extractids;
+    public Set<ExtractDetails> getExtractDetails() {
+        return extractDetails;
     }
 
-    public ExtractConfig extractids(Set<ExtractDetails> extractDetails) {
-        this.extractids = extractDetails;
+    public ExtractConfig extractDetails(Set<ExtractDetails> extractDetails) {
+        this.extractDetails = extractDetails;
         return this;
     }
 
-    public ExtractConfig addExtractid(ExtractDetails extractDetails) {
-        this.extractids.add(extractDetails);
+    public ExtractConfig addExtractDetails(ExtractDetails extractDetails) {
+        this.extractDetails.add(extractDetails);
         extractDetails.setExtractConfig(this);
         return this;
     }
 
-    public ExtractConfig removeExtractid(ExtractDetails extractDetails) {
-        this.extractids.remove(extractDetails);
+    public ExtractConfig removeExtractDetails(ExtractDetails extractDetails) {
+        this.extractDetails.remove(extractDetails);
         extractDetails.setExtractConfig(null);
         return this;
     }
 
-    public void setExtractids(Set<ExtractDetails> extractDetails) {
-        this.extractids = extractDetails;
+    public void setExtractDetails(Set<ExtractDetails> extractDetails) {
+        this.extractDetails = extractDetails;
     }
 
-    public Set<ExtractOrganisationAudit> getExtractids() {
-        return extractids;
+    public Set<ExtractAudit> getExtractAudits() {
+        return extractAudits;
     }
 
-    public ExtractConfig extractids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.extractids = extractOrganisationAudits;
+    public ExtractConfig extractAudits(Set<ExtractAudit> extractAudits) {
+        this.extractAudits = extractAudits;
         return this;
     }
 
-    public ExtractConfig addExtractid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.extractids.add(extractOrganisationAudit);
-        extractOrganisationAudit.setExtractConfig(this);
-        return this;
-    }
-
-    public ExtractConfig removeExtractid(ExtractOrganisationAudit extractOrganisationAudit) {
-        this.extractids.remove(extractOrganisationAudit);
-        extractOrganisationAudit.setExtractConfig(null);
-        return this;
-    }
-
-    public void setExtractids(Set<ExtractOrganisationAudit> extractOrganisationAudits) {
-        this.extractids = extractOrganisationAudits;
-    }
-
-    public Set<ExtractAudit> getExtractids() {
-        return extractids;
-    }
-
-    public ExtractConfig extractids(Set<ExtractAudit> extractAudits) {
-        this.extractids = extractAudits;
-        return this;
-    }
-
-    public ExtractConfig addExtractid(ExtractAudit extractAudit) {
-        this.extractids.add(extractAudit);
+    public ExtractConfig addExtractAudit(ExtractAudit extractAudit) {
+        this.extractAudits.add(extractAudit);
         extractAudit.setExtractConfig(this);
         return this;
     }
 
-    public ExtractConfig removeExtractid(ExtractAudit extractAudit) {
-        this.extractids.remove(extractAudit);
+    public ExtractConfig removeExtractAudit(ExtractAudit extractAudit) {
+        this.extractAudits.remove(extractAudit);
         extractAudit.setExtractConfig(null);
         return this;
     }
 
-    public void setExtractids(Set<ExtractAudit> extractAudits) {
-        this.extractids = extractAudits;
+    public void setExtractAudits(Set<ExtractAudit> extractAudits) {
+        this.extractAudits = extractAudits;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -318,6 +306,7 @@ public class ExtractConfig implements Serializable {
             ", requestingorg='" + getRequestingorg() + "'" +
             ", active='" + isActive() + "'" +
             ", deleted='" + isDeleted() + "'" +
+            ", disabled='" + isDisabled() + "'" +
             ", emailContact='" + getEmailContact() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             "}";

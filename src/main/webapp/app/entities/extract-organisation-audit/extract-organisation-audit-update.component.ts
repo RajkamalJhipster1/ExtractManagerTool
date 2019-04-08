@@ -10,10 +10,8 @@ import { IExtractOrganisationAudit } from 'app/shared/model/extract-organisation
 import { ExtractOrganisationAuditService } from './extract-organisation-audit.service';
 import { IOrganisation } from 'app/shared/model/organisation.model';
 import { OrganisationService } from 'app/entities/organisation';
-import { IExtractConfig } from 'app/shared/model/extract-config.model';
-import { ExtractConfigService } from 'app/entities/extract-config';
-import { IExtractTables } from 'app/shared/model/extract-tables.model';
-import { ExtractTablesService } from 'app/entities/extract-tables';
+import { IExtractAudit } from 'app/shared/model/extract-audit.model';
+import { ExtractAuditService } from 'app/entities/extract-audit';
 
 @Component({
     selector: 'jhi-extract-organisation-audit-update',
@@ -25,17 +23,14 @@ export class ExtractOrganisationAuditUpdateComponent implements OnInit {
 
     organisations: IOrganisation[];
 
-    extractconfigs: IExtractConfig[];
-
-    extracttables: IExtractTables[];
+    extractaudits: IExtractAudit[];
     createdDate: string;
 
     constructor(
         protected jhiAlertService: JhiAlertService,
         protected extractOrganisationAuditService: ExtractOrganisationAuditService,
         protected organisationService: OrganisationService,
-        protected extractConfigService: ExtractConfigService,
-        protected extractTablesService: ExtractTablesService,
+        protected extractAuditService: ExtractAuditService,
         protected activatedRoute: ActivatedRoute
     ) {}
 
@@ -55,20 +50,13 @@ export class ExtractOrganisationAuditUpdateComponent implements OnInit {
                 map((response: HttpResponse<IOrganisation[]>) => response.body)
             )
             .subscribe((res: IOrganisation[]) => (this.organisations = res), (res: HttpErrorResponse) => this.onError(res.message));
-        this.extractConfigService
+        this.extractAuditService
             .query()
             .pipe(
-                filter((mayBeOk: HttpResponse<IExtractConfig[]>) => mayBeOk.ok),
-                map((response: HttpResponse<IExtractConfig[]>) => response.body)
+                filter((mayBeOk: HttpResponse<IExtractAudit[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IExtractAudit[]>) => response.body)
             )
-            .subscribe((res: IExtractConfig[]) => (this.extractconfigs = res), (res: HttpErrorResponse) => this.onError(res.message));
-        this.extractTablesService
-            .query()
-            .pipe(
-                filter((mayBeOk: HttpResponse<IExtractTables[]>) => mayBeOk.ok),
-                map((response: HttpResponse<IExtractTables[]>) => response.body)
-            )
-            .subscribe((res: IExtractTables[]) => (this.extracttables = res), (res: HttpErrorResponse) => this.onError(res.message));
+            .subscribe((res: IExtractAudit[]) => (this.extractaudits = res), (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     previousState() {
@@ -109,11 +97,7 @@ export class ExtractOrganisationAuditUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackExtractConfigById(index: number, item: IExtractConfig) {
-        return item.id;
-    }
-
-    trackExtractTablesById(index: number, item: IExtractTables) {
+    trackExtractAuditById(index: number, item: IExtractAudit) {
         return item.id;
     }
 }

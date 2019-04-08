@@ -42,6 +42,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ExtractManagerToolApp.class)
 public class ExtractOrganisationAuditResourceIntTest {
 
+    private static final String DEFAULT_FIRST_EXTRACT_POINT = "AAAAAAAAAA";
+    private static final String UPDATED_FIRST_EXTRACT_POINT = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LAST_EXTRACT_POINT = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_EXTRACT_POINT = "BBBBBBBBBB";
+
     private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
@@ -90,6 +96,8 @@ public class ExtractOrganisationAuditResourceIntTest {
      */
     public static ExtractOrganisationAudit createEntity(EntityManager em) {
         ExtractOrganisationAudit extractOrganisationAudit = new ExtractOrganisationAudit()
+            .firstExtractPoint(DEFAULT_FIRST_EXTRACT_POINT)
+            .lastExtractPoint(DEFAULT_LAST_EXTRACT_POINT)
             .createdDate(DEFAULT_CREATED_DATE)
             .success(DEFAULT_SUCCESS);
         return extractOrganisationAudit;
@@ -115,6 +123,8 @@ public class ExtractOrganisationAuditResourceIntTest {
         List<ExtractOrganisationAudit> extractOrganisationAuditList = extractOrganisationAuditRepository.findAll();
         assertThat(extractOrganisationAuditList).hasSize(databaseSizeBeforeCreate + 1);
         ExtractOrganisationAudit testExtractOrganisationAudit = extractOrganisationAuditList.get(extractOrganisationAuditList.size() - 1);
+        assertThat(testExtractOrganisationAudit.getFirstExtractPoint()).isEqualTo(DEFAULT_FIRST_EXTRACT_POINT);
+        assertThat(testExtractOrganisationAudit.getLastExtractPoint()).isEqualTo(DEFAULT_LAST_EXTRACT_POINT);
         assertThat(testExtractOrganisationAudit.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testExtractOrganisationAudit.isSuccess()).isEqualTo(DEFAULT_SUCCESS);
     }
@@ -149,6 +159,8 @@ public class ExtractOrganisationAuditResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(extractOrganisationAudit.getId().intValue())))
+            .andExpect(jsonPath("$.[*].firstExtractPoint").value(hasItem(DEFAULT_FIRST_EXTRACT_POINT.toString())))
+            .andExpect(jsonPath("$.[*].lastExtractPoint").value(hasItem(DEFAULT_LAST_EXTRACT_POINT.toString())))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
             .andExpect(jsonPath("$.[*].success").value(hasItem(DEFAULT_SUCCESS.booleanValue())));
     }
@@ -164,6 +176,8 @@ public class ExtractOrganisationAuditResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(extractOrganisationAudit.getId().intValue()))
+            .andExpect(jsonPath("$.firstExtractPoint").value(DEFAULT_FIRST_EXTRACT_POINT.toString()))
+            .andExpect(jsonPath("$.lastExtractPoint").value(DEFAULT_LAST_EXTRACT_POINT.toString()))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
             .andExpect(jsonPath("$.success").value(DEFAULT_SUCCESS.booleanValue()));
     }
@@ -189,6 +203,8 @@ public class ExtractOrganisationAuditResourceIntTest {
         // Disconnect from session so that the updates on updatedExtractOrganisationAudit are not directly saved in db
         em.detach(updatedExtractOrganisationAudit);
         updatedExtractOrganisationAudit
+            .firstExtractPoint(UPDATED_FIRST_EXTRACT_POINT)
+            .lastExtractPoint(UPDATED_LAST_EXTRACT_POINT)
             .createdDate(UPDATED_CREATED_DATE)
             .success(UPDATED_SUCCESS);
 
@@ -201,6 +217,8 @@ public class ExtractOrganisationAuditResourceIntTest {
         List<ExtractOrganisationAudit> extractOrganisationAuditList = extractOrganisationAuditRepository.findAll();
         assertThat(extractOrganisationAuditList).hasSize(databaseSizeBeforeUpdate);
         ExtractOrganisationAudit testExtractOrganisationAudit = extractOrganisationAuditList.get(extractOrganisationAuditList.size() - 1);
+        assertThat(testExtractOrganisationAudit.getFirstExtractPoint()).isEqualTo(UPDATED_FIRST_EXTRACT_POINT);
+        assertThat(testExtractOrganisationAudit.getLastExtractPoint()).isEqualTo(UPDATED_LAST_EXTRACT_POINT);
         assertThat(testExtractOrganisationAudit.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testExtractOrganisationAudit.isSuccess()).isEqualTo(UPDATED_SUCCESS);
     }

@@ -10,9 +10,24 @@
                         [(ngModel)]="extractOrganisation.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_organisation">Organisation</label>
-                    <input type="text" class="form-control" name="organisation" id="field_organisation"
-                        [(ngModel)]="extractOrganisation.organisation" />
+                    <label class="form-control-label" for="field_organisationName">Organisation Name</label>
+                    <input type="text" class="form-control" name="organisationName" id="field_organisationName"
+                        [(ngModel)]="extractOrganisation.organisationName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                        [(ngModel)]="extractOrganisation.deleted" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_disabled">Disabled</label>
+                    <input type="checkbox" class="form-control" name="disabled" id="field_disabled"
+                        [(ngModel)]="extractOrganisation.disabled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isActive">Is Active</label>
+                    <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                        [(ngModel)]="extractOrganisation.isActive" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_modifiedDate">Modified Date</label>

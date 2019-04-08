@@ -14,17 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="organisation"/>
 
-        <addForeignKeyConstraint baseColumnNames="extract_config_id"
+        <addForeignKeyConstraint baseColumnNames="extract_audit_id"
                                  baseTableName="extract_organisation_audit"
-                                 constraintName="fk_extract_organisation_audit_extract_config_id"
+                                 constraintName="fk_extract_organisation_audit_extract_audit_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="extract_config"/>
-
-        <addForeignKeyConstraint baseColumnNames="extract_tables_id"
-                                 baseTableName="extract_organisation_audit"
-                                 constraintName="fk_extract_organisation_audit_extract_tables_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="extract_tables"/>
+                                 referencedTableName="extract_audit"/>
 
     </changeSet>
 </databaseChangeLog>

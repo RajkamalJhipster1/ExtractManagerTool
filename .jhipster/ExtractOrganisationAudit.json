@@ -2,6 +2,14 @@
     "name": "ExtractOrganisationAudit",
     "fields": [
         {
+            "fieldName": "firstExtractPoint",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastExtractPoint",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdDate",
             "fieldType": "Instant"
         },
@@ -18,14 +26,8 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipName": "extractConfig",
-            "otherEntityName": "extractConfig",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "extractTables",
-            "otherEntityName": "extractTables",
+            "relationshipName": "extractAudit",
+            "otherEntityName": "extractAudit",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }

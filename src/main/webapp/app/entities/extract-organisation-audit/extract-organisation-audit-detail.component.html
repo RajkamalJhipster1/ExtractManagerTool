@@ -5,6 +5,14 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span>First Extract Point</span></dt>
+                <dd>
+                    <span>{{extractOrganisationAudit.firstExtractPoint}}</span>
+                </dd>
+                <dt><span>Last Extract Point</span></dt>
+                <dd>
+                    <span>{{extractOrganisationAudit.lastExtractPoint}}</span>
+                </dd>
                 <dt><span>Created Date</span></dt>
                 <dd>
                     <span>{{extractOrganisationAudit.createdDate}}</span>
@@ -19,16 +27,10 @@
                         <a [routerLink]="['/organisation', extractOrganisationAudit.organisation?.id, 'view']">{{extractOrganisationAudit.organisation?.id}}</a>
                     </div>
                 </dd>
-                <dt><span>Extract Config</span></dt>
+                <dt><span>Extract Audit</span></dt>
                 <dd>
-                    <div *ngIf="extractOrganisationAudit.extractConfig">
-                        <a [routerLink]="['/extract-config', extractOrganisationAudit.extractConfig?.id, 'view']">{{extractOrganisationAudit.extractConfig?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span>Extract Tables</span></dt>
-                <dd>
-                    <div *ngIf="extractOrganisationAudit.extractTables">
-                        <a [routerLink]="['/extract-tables', extractOrganisationAudit.extractTables?.id, 'view']">{{extractOrganisationAudit.extractTables?.id}}</a>
+                    <div *ngIf="extractOrganisationAudit.extractAudit">
+                        <a [routerLink]="['/extract-audit', extractOrganisationAudit.extractAudit?.id, 'view']">{{extractOrganisationAudit.extractAudit?.id}}</a>
                     </div>
                 </dd>
             </dl>

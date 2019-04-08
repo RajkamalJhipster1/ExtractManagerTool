@@ -58,11 +58,11 @@ public class ExtractParts implements Serializable {
     private String encryptionType;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractids")
+    @JsonIgnoreProperties("extractParts")
     private ExtractConfig extractConfig;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractTableids")
+    @JsonIgnoreProperties("extractParts")
     private ExtractTables extractTables;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

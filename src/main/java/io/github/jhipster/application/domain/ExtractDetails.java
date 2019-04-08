@@ -31,7 +31,7 @@ public class ExtractDetails implements Serializable {
     private String value;
 
     @ManyToOne
-    @JsonIgnoreProperties("extractids")
+    @JsonIgnoreProperties("extractDetails")
     private ExtractConfig extractConfig;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
