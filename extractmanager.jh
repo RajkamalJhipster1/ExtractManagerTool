@@ -1,5 +1,6 @@
 entity Organisation {
      	CDB  Integer,
+        Guid String,
      	OrganisationName String,
      	NationalPracticeCode String,
         Active Boolean
@@ -7,6 +8,7 @@ entity Organisation {
 
 entity ExtractConfig {
      	Extractname  String,
+        Guid String,
      	Type String,
      	Requestingorg String,
         Active Boolean,
@@ -46,6 +48,7 @@ entity ExtractDetails {
 
 entity ExtractTables {
      	Tablename  String,
+        Guid String,
      	IsExtractable Boolean
 }
 
