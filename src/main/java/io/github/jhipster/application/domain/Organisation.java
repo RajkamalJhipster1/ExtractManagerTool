@@ -29,6 +29,9 @@ public class Organisation implements Serializable {
     @Column(name = "c_db")
     private Integer cDB;
 
+    @Column(name = "guid")
+    private String guid;
+
     @Column(name = "organisation_name")
     private String organisationName;
 
@@ -64,6 +67,19 @@ public class Organisation implements Serializable {
 
     public void setcDB(Integer cDB) {
         this.cDB = cDB;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public Organisation guid(String guid) {
+        this.guid = guid;
+        return this;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
 
     public String getOrganisationName() {
@@ -181,6 +197,7 @@ public class Organisation implements Serializable {
         return "Organisation{" +
             "id=" + getId() +
             ", cDB=" + getcDB() +
+            ", guid='" + getGuid() + "'" +
             ", organisationName='" + getOrganisationName() + "'" +
             ", nationalPracticeCode='" + getNationalPracticeCode() + "'" +
             ", active='" + isActive() + "'" +

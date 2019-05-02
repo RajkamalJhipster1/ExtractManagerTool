@@ -21,7 +21,7 @@ describe('Service Tests', () => {
             service = injector.get(OrganisationService);
             httpMock = injector.get(HttpTestingController);
 
-            elemDefault = new Organisation(0, 0, 'AAAAAAA', 'AAAAAAA', false);
+            elemDefault = new Organisation(0, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false);
         });
 
         describe('Service methods', async () => {
@@ -56,6 +56,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         cDB: 1,
+                        guid: 'BBBBBB',
                         organisationName: 'BBBBBB',
                         nationalPracticeCode: 'BBBBBB',
                         active: true
@@ -76,6 +77,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         cDB: 1,
+                        guid: 'BBBBBB',
                         organisationName: 'BBBBBB',
                         nationalPracticeCode: 'BBBBBB',
                         active: true

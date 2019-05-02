@@ -4,6 +4,7 @@ import { IExtractOrganisationAudit } from 'app/shared/model/extract-organisation
 export interface IOrganisation {
     id?: number;
     cDB?: number;
+    guid?: string;
     organisationName?: string;
     nationalPracticeCode?: string;
     active?: boolean;
@@ -15,6 +16,7 @@ export class Organisation implements IOrganisation {
     constructor(
         public id?: number,
         public cDB?: number,
+        public guid?: string,
         public organisationName?: string,
         public nationalPracticeCode?: string,
         public active?: boolean,

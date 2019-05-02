@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new ExtractConfig(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false, false, false, 'AAAAAAA', currentDate);
+            elemDefault = new ExtractConfig(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false, false, false, 'AAAAAAA', currentDate);
         });
 
         describe('Service methods', async () => {
@@ -71,6 +71,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         extractname: 'BBBBBB',
+                        guid: 'BBBBBB',
                         type: 'BBBBBB',
                         requestingorg: 'BBBBBB',
                         active: true,
@@ -100,6 +101,7 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         extractname: 'BBBBBB',
+                        guid: 'BBBBBB',
                         type: 'BBBBBB',
                         requestingorg: 'BBBBBB',
                         active: true,

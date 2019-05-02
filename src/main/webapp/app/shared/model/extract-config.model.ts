@@ -7,6 +7,7 @@ import { IExtractAudit } from 'app/shared/model/extract-audit.model';
 export interface IExtractConfig {
     id?: number;
     extractname?: string;
+    guid?: string;
     type?: string;
     requestingorg?: string;
     active?: boolean;
@@ -24,6 +25,7 @@ export class ExtractConfig implements IExtractConfig {
     constructor(
         public id?: number,
         public extractname?: string,
+        public guid?: string,
         public type?: string,
         public requestingorg?: string,
         public active?: boolean,

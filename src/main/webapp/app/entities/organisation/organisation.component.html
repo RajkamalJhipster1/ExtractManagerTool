@@ -16,6 +16,7 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>C DB</span></th>
+            <th><span>Guid</span></th>
             <th><span>Organisation Name</span></th>
             <th><span>National Practice Code</span></th>
             <th><span>Active</span></th>
@@ -26,6 +27,7 @@
             <tr *ngFor="let organisation of organisations ;trackBy: trackId">
                 <td><a [routerLink]="['/organisation', organisation.id, 'view' ]">{{organisation.id}}</a></td>
                 <td>{{organisation.cDB}}</td>
+                <td>{{organisation.guid}}</td>
                 <td>{{organisation.organisationName}}</td>
                 <td>{{organisation.nationalPracticeCode}}</td>
                 <td>{{organisation.active}}</td>

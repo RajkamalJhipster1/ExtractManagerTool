@@ -16,6 +16,7 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Extractname</span></th>
+            <th><span>Guid</span></th>
             <th><span>Type</span></th>
             <th><span>Requestingorg</span></th>
             <th><span>Active</span></th>
@@ -30,6 +31,7 @@
             <tr *ngFor="let extractConfig of extractConfigs ;trackBy: trackId">
                 <td><a [routerLink]="['/extract-config', extractConfig.id, 'view' ]">{{extractConfig.id}}</a></td>
                 <td>{{extractConfig.extractname}}</td>
+                <td>{{extractConfig.guid}}</td>
                 <td>{{extractConfig.type}}</td>
                 <td>{{extractConfig.requestingorg}}</td>
                 <td>{{extractConfig.active}}</td>
