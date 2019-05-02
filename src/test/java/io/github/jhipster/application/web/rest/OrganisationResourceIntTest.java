@@ -43,6 +43,9 @@ public class OrganisationResourceIntTest {
     private static final Integer DEFAULT_C_DB = 1;
     private static final Integer UPDATED_C_DB = 2;
 
+    private static final String DEFAULT_GUID = "AAAAAAAAAA";
+    private static final String UPDATED_GUID = "BBBBBBBBBB";
+
     private static final String DEFAULT_ORGANISATION_NAME = "AAAAAAAAAA";
     private static final String UPDATED_ORGANISATION_NAME = "BBBBBBBBBB";
 
@@ -95,6 +98,7 @@ public class OrganisationResourceIntTest {
     public static Organisation createEntity(EntityManager em) {
         Organisation organisation = new Organisation()
             .cDB(DEFAULT_C_DB)
+            .guid(DEFAULT_GUID)
             .organisationName(DEFAULT_ORGANISATION_NAME)
             .nationalPracticeCode(DEFAULT_NATIONAL_PRACTICE_CODE)
             .active(DEFAULT_ACTIVE);
@@ -122,6 +126,7 @@ public class OrganisationResourceIntTest {
         assertThat(organisationList).hasSize(databaseSizeBeforeCreate + 1);
         Organisation testOrganisation = organisationList.get(organisationList.size() - 1);
         assertThat(testOrganisation.getcDB()).isEqualTo(DEFAULT_C_DB);
+        assertThat(testOrganisation.getGuid()).isEqualTo(DEFAULT_GUID);
         assertThat(testOrganisation.getOrganisationName()).isEqualTo(DEFAULT_ORGANISATION_NAME);
         assertThat(testOrganisation.getNationalPracticeCode()).isEqualTo(DEFAULT_NATIONAL_PRACTICE_CODE);
         assertThat(testOrganisation.isActive()).isEqualTo(DEFAULT_ACTIVE);
@@ -158,6 +163,7 @@ public class OrganisationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(organisation.getId().intValue())))
             .andExpect(jsonPath("$.[*].cDB").value(hasItem(DEFAULT_C_DB)))
+            .andExpect(jsonPath("$.[*].guid").value(hasItem(DEFAULT_GUID.toString())))
             .andExpect(jsonPath("$.[*].organisationName").value(hasItem(DEFAULT_ORGANISATION_NAME.toString())))
             .andExpect(jsonPath("$.[*].nationalPracticeCode").value(hasItem(DEFAULT_NATIONAL_PRACTICE_CODE.toString())))
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())));
@@ -175,6 +181,7 @@ public class OrganisationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(organisation.getId().intValue()))
             .andExpect(jsonPath("$.cDB").value(DEFAULT_C_DB))
+            .andExpect(jsonPath("$.guid").value(DEFAULT_GUID.toString()))
             .andExpect(jsonPath("$.organisationName").value(DEFAULT_ORGANISATION_NAME.toString()))
             .andExpect(jsonPath("$.nationalPracticeCode").value(DEFAULT_NATIONAL_PRACTICE_CODE.toString()))
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()));
@@ -202,6 +209,7 @@ public class OrganisationResourceIntTest {
         em.detach(updatedOrganisation);
         updatedOrganisation
             .cDB(UPDATED_C_DB)
+            .guid(UPDATED_GUID)
             .organisationName(UPDATED_ORGANISATION_NAME)
             .nationalPracticeCode(UPDATED_NATIONAL_PRACTICE_CODE)
             .active(UPDATED_ACTIVE);
@@ -216,6 +224,7 @@ public class OrganisationResourceIntTest {
         assertThat(organisationList).hasSize(databaseSizeBeforeUpdate);
         Organisation testOrganisation = organisationList.get(organisationList.size() - 1);
         assertThat(testOrganisation.getcDB()).isEqualTo(UPDATED_C_DB);
+        assertThat(testOrganisation.getGuid()).isEqualTo(UPDATED_GUID);
         assertThat(testOrganisation.getOrganisationName()).isEqualTo(UPDATED_ORGANISATION_NAME);
         assertThat(testOrganisation.getNationalPracticeCode()).isEqualTo(UPDATED_NATIONAL_PRACTICE_CODE);
         assertThat(testOrganisation.isActive()).isEqualTo(UPDATED_ACTIVE);

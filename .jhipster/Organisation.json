@@ -6,6 +6,10 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "guid",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "organisationName",
             "fieldType": "String"
         },

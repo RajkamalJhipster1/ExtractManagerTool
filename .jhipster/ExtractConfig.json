@@ -6,6 +6,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "guid",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "type",
             "fieldType": "String"
         },

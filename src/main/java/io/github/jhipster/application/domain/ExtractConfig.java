@@ -30,6 +30,9 @@ public class ExtractConfig implements Serializable {
     @Column(name = "extractname")
     private String extractname;
 
+    @Column(name = "guid")
+    private String guid;
+
     @Column(name = "jhi_type")
     private String type;
 
@@ -83,6 +86,19 @@ public class ExtractConfig implements Serializable {
 
     public void setExtractname(String extractname) {
         this.extractname = extractname;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public ExtractConfig guid(String guid) {
+        this.guid = guid;
+        return this;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
 
     public String getType() {
@@ -302,6 +318,7 @@ public class ExtractConfig implements Serializable {
         return "ExtractConfig{" +
             "id=" + getId() +
             ", extractname='" + getExtractname() + "'" +
+            ", guid='" + getGuid() + "'" +
             ", type='" + getType() + "'" +
             ", requestingorg='" + getRequestingorg() + "'" +
             ", active='" + isActive() + "'" +

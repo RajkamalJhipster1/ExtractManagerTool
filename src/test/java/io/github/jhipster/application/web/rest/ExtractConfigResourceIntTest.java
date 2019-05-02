@@ -45,6 +45,9 @@ public class ExtractConfigResourceIntTest {
     private static final String DEFAULT_EXTRACTNAME = "AAAAAAAAAA";
     private static final String UPDATED_EXTRACTNAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_GUID = "AAAAAAAAAA";
+    private static final String UPDATED_GUID = "BBBBBBBBBB";
+
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
@@ -109,6 +112,7 @@ public class ExtractConfigResourceIntTest {
     public static ExtractConfig createEntity(EntityManager em) {
         ExtractConfig extractConfig = new ExtractConfig()
             .extractname(DEFAULT_EXTRACTNAME)
+            .guid(DEFAULT_GUID)
             .type(DEFAULT_TYPE)
             .requestingorg(DEFAULT_REQUESTINGORG)
             .active(DEFAULT_ACTIVE)
@@ -140,6 +144,7 @@ public class ExtractConfigResourceIntTest {
         assertThat(extractConfigList).hasSize(databaseSizeBeforeCreate + 1);
         ExtractConfig testExtractConfig = extractConfigList.get(extractConfigList.size() - 1);
         assertThat(testExtractConfig.getExtractname()).isEqualTo(DEFAULT_EXTRACTNAME);
+        assertThat(testExtractConfig.getGuid()).isEqualTo(DEFAULT_GUID);
         assertThat(testExtractConfig.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testExtractConfig.getRequestingorg()).isEqualTo(DEFAULT_REQUESTINGORG);
         assertThat(testExtractConfig.isActive()).isEqualTo(DEFAULT_ACTIVE);
@@ -180,6 +185,7 @@ public class ExtractConfigResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(extractConfig.getId().intValue())))
             .andExpect(jsonPath("$.[*].extractname").value(hasItem(DEFAULT_EXTRACTNAME.toString())))
+            .andExpect(jsonPath("$.[*].guid").value(hasItem(DEFAULT_GUID.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].requestingorg").value(hasItem(DEFAULT_REQUESTINGORG.toString())))
             .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.booleanValue())))
@@ -201,6 +207,7 @@ public class ExtractConfigResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(extractConfig.getId().intValue()))
             .andExpect(jsonPath("$.extractname").value(DEFAULT_EXTRACTNAME.toString()))
+            .andExpect(jsonPath("$.guid").value(DEFAULT_GUID.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.requestingorg").value(DEFAULT_REQUESTINGORG.toString()))
             .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.booleanValue()))
@@ -232,6 +239,7 @@ public class ExtractConfigResourceIntTest {
         em.detach(updatedExtractConfig);
         updatedExtractConfig
             .extractname(UPDATED_EXTRACTNAME)
+            .guid(UPDATED_GUID)
             .type(UPDATED_TYPE)
             .requestingorg(UPDATED_REQUESTINGORG)
             .active(UPDATED_ACTIVE)
@@ -250,6 +258,7 @@ public class ExtractConfigResourceIntTest {
         assertThat(extractConfigList).hasSize(databaseSizeBeforeUpdate);
         ExtractConfig testExtractConfig = extractConfigList.get(extractConfigList.size() - 1);
         assertThat(testExtractConfig.getExtractname()).isEqualTo(UPDATED_EXTRACTNAME);
+        assertThat(testExtractConfig.getGuid()).isEqualTo(UPDATED_GUID);
         assertThat(testExtractConfig.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testExtractConfig.getRequestingorg()).isEqualTo(UPDATED_REQUESTINGORG);
         assertThat(testExtractConfig.isActive()).isEqualTo(UPDATED_ACTIVE);
